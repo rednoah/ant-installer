@@ -8,4 +8,4 @@ Add the following __Package Source__ to Synology DSM ► Package Center ► Sett
 
 https://app.filebot.net/syno/
 
-On install, the package will download the latest Apache [Ant & Ivy](https://www.apache.org/dist/ant/) binaries. This may take a while.
+On install, the package will download the latest [Apache Ant & Ivy](https://www.apache.org/dist/ant/) binaries. This may take a while.
