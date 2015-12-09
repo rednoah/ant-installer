@@ -11,9 +11,9 @@ cd "$SYNOPKG_PKGDEST"
 
 
 # make sure that `ant` is working
-if [ -x "/usr/local/bin/ant" ]; then
+if [ -x "/usr/local/ant/bin/ant" ]; then
 	# display success message
-	"/usr/local/bin/ant" -version 2>&1 | tee "$SYNOPKG_TEMP_LOGFILE"
+	export ANT_HOME="/usr/local/ant" && "/usr/local/ant/bin/ant" -version 2>&1 | tee "$SYNOPKG_TEMP_LOGFILE"
 else
 	# display error message
 	echo "Ooops, something went wrong... View Log for details." | tee "$SYNOPKG_TEMP_LOGFILE"
