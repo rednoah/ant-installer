@@ -1,0 +1,37 @@
+#!/bin/sh
+
+PKG_LOG="$SYNOPKG_PKGDEST/install-ant.log"
+SYS_PROFILE="/etc/profile"
+COMMENT="# added by Ant Installer"
+
+
+case "$1" in
+	start)
+		if [ `grep -c "$COMMENT" $SYS_PROFILE` == "0" ]; then
+			if [ -x "/usr/local/ant/bin/ant" ]; then
+				echo "Add environment variables to $SYS_PROFILE" >> "$PKG_LOG"
+
+				# add environment variables to /etc/profile
+				echo "export ANT_HOME=/usr/local/ant      ${COMMENT}" >> "$SYS_PROFILE"
+			fi
+		fi
+		exit 0
+	;;
+
+	stop)
+		exit 0
+	;;
+
+	status)
+		exit 0
+	;;
+
+	log)
+		echo "$PKG_LOG"
+		exit 0
+	;;
+
+	*)
+		exit 1
+	;;
+esac

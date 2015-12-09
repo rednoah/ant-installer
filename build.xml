@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<project name="java-installer" default="spk" xmlns:syno="antlib:net.filebot.ant.spk">
+	<property file="package.properties" />
+	<property file="profile.properties" />
+
+	<property name="dir.source" location="${basedir}/src" />
+	<property name="dir.package" location="${basedir}/package" />
+	<property name="dir.release" location="${basedir}/release" />
+
+
+	<target name="spk" description="Build Synology Package" depends="build">
+		<syno:spk destdir="${dir.release}" name="${package}" version="${version}" arch="noarch">
+			<info name="displayname" value="${title}" />
+			<info name="description" value="${title} will help you install ${product} ${version} on your Synology NAS. On install, this package will download the Apache Ant &amp; Ivy binaries and optional libraries. This may take a while." />
+			<info name="maintainer" value="rednoah" />
+			<info name="maintainer_url" value="https://github.com/rednoah/ant-installer" />
+			<info name="distributor" value="rednoah" />
+			<info name="distributor_url" value="https://github.com/rednoah/ant-installer" />
+			<info name="support_url" value="https://github.com/rednoah/ant-installer/issues" />
+			<info name="startable" value="no" />
+			<info name="silent_install" value="yes" />
+			<info name="silent_upgrade" value="yes" />
+			<info name="silent_uninstall" value="yes" />
+			<info name="thirdparty" value="yes" />
+			<info name="firmware" value="5.0" />
+
+			<!-- 100 MB for good measure -->
+			<info name="extractsize" value="104857600" />
+
+			<icon size="72" file="${dir.package}/synology/images/thumb_72.png" />
+			<icon size="256" file="${dir.package}/synology/images/thumb_256.png" />
+
+			<scripts dir="${dir.package}/synology/scripts" filemode="755" />
+			<package dir="${dir.release}" includes="*.sh" filemode="755" />
+
+			<codesign secring="${dir.package}/gpg/secring.gpg" keyid="${gpg.key}" password="${gpg.pwd}" />
+		</syno:spk>
+	</target>
+
+
+	<target name="package-source" description="Update Synology Package Source">
+		<syno:package-source file="${basedir}/spksrc.json">
+			<keyring file="${dir.package}/gpg/FileBot.pub" />
+			<spk file="${dir.release}/${package}-${version}-noarch.spk">
+				<info name="link" value="https://github.com/rednoah/ant-installer/releases/download/${version}/${package}-${version}-noarch.spk" />
+				<thumbnail url="https://raw.githubusercontent.com/rednoah/ant-installer/master/package/synology/images/thumb_256.png" />
+			</spk>
+		</syno:package-source>
+	</target>
+
+
+	<target name="build">
+		<property file="build-ant.properties" />
+		<copy todir="${dir.release}" overwrite="yes" encoding="UTF-8" verbose="true">
+			<fileset dir="${dir.source}">
+				<include name="*.sh" />
+			</fileset>
+			<filterset begintoken="@{" endtoken="}">
+				<propertyset>
+					<propertyref builtin="all" />
+				</propertyset>
+			</filterset>
+		</copy>
+	</target>
+
+
+	<target name="update-ant" description="Update Ant build properties">
+		<taskdef name="groovy" classname="org.codehaus.groovy.ant.Groovy" />
+		<delete file="build-ant.properties" />
+		<groovy src="build-ant.groovy" />
+	</target>
+
+</project>

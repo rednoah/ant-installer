@@ -45,19 +45,18 @@ ln -sf "$ANT_EXE" "/usr/local/bin/ant"
 
 # link ant home to /usr/local/ant
 ANT_BIN=`dirname $ANT_EXE`
-ANT_HOME=`dirname $ANT_BIN`
+export ANT_HOME=`dirname $ANT_BIN`
 ln -sf "$ANT_HOME" "/usr/local/ant"
 
 # fetch optional ant libs
-export ANT_HOME
 $ANT_EXE -f "$ANT_HOME/fetch.xml" -Ddest=system
 
 # link ivy into the ant lib folder
-IVY_JAR=`find "$PWD" -name "ivy-*.jar" -type f`
+IVY_JAR=`find "$PWD" -name "ivy-*.*.*.jar" -type f`
 IVY_ANT_LIB="$ANT_HOME/lib/`basename $IVY_JAR`"
 echo "Link $IVY_ANT_LIB to $IVY_JAR"
 ln -sf "$IVY_JAR" "$IVY_ANT_LIB"
 
-# test
+# run ant diagnostics
 echo "Execute $ANT_EXE -diagnostics"
 $ANT_EXE -diagnostics
