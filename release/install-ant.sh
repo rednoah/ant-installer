@@ -45,11 +45,10 @@ ln -sf "$ANT_EXE" "/usr/local/bin/ant"
 
 # link ant home to /usr/local/ant
 ANT_BIN=`dirname $ANT_EXE`
-ANT_HOME=`dirname $ANT_BIN`
+export ANT_HOME=`dirname $ANT_BIN`
 ln -sf "$ANT_HOME" "/usr/local/ant"
 
 # fetch optional ant libs
-export ANT_HOME="/usr/local/ant"
 export ANT_OPTS="-Duser.home=$PWD"
 $ANT_EXE -f "$ANT_HOME/fetch.xml" -Ddest=system
 

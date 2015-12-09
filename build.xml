@@ -10,7 +10,7 @@
 
 	<target name="spk" description="Build Synology Package" depends="build">
 		<syno:spk destdir="${dir.release}" name="${package}" version="${version}" arch="noarch">
-			<info name="displayname" value="${title}" />
+			<info name="displayname" value="${product}" />
 			<info name="description" value="${title} will help you install ${product} ${version} on your Synology NAS. On install, this package will download the Apache Ant and Apache Ivy binaries and optional libraries. This may take a while." />
 			<info name="maintainer" value="rednoah" />
 			<info name="maintainer_url" value="https://github.com/rednoah/ant-installer" />
@@ -42,6 +42,7 @@
 		<syno:package-source file="${basedir}/spksrc.json">
 			<keyring file="${dir.package}/gpg/FileBot.pub" />
 			<spk file="${dir.release}/${package}-${version}-noarch.spk">
+				<info name="dname" value="${title}" />
 				<info name="link" value="https://github.com/rednoah/ant-installer/releases/download/${version}/${package}-${version}-noarch.spk" />
 				<thumbnail url="https://raw.githubusercontent.com/rednoah/ant-installer/master/package/synology/images/thumb_256.png" />
 			</spk>
