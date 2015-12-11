@@ -50,6 +50,7 @@ ln -sf "$ANT_HOME" "/usr/local/ant"
 
 # fetch optional ant libs
 export ANT_OPTS="-Duser.home=$PWD"
+export LANG="en_US.utf8"
 $ANT_EXE -f "$ANT_HOME/fetch.xml" -Ddest=system
 
 # link ivy into the ant lib folder
