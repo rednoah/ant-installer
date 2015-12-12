@@ -12,8 +12,8 @@
 		<syno:spk destdir="${dir.release}" name="${package}" version="${version}" arch="noarch">
 			<info name="displayname" value="${product}" />
 			<info name="description" value="Apache Ant is a command-line tool that drives processes described in build files. Ant supplies a number of built-in tasks allowing you to compile, assemble, test and run Java applications. Software development projects looking for dependency management can use Ant in combination with Apache Ivy." />
-			<info name="maintainer" value="rednoah" />
-			<info name="maintainer_url" value="https://github.com/rednoah/ant-installer" />
+			<info name="maintainer" value="Apache Software Foundation" />
+			<info name="maintainer_url" value="http://ant.apache.org/" />
 			<info name="distributor" value="rednoah" />
 			<info name="distributor_url" value="https://github.com/rednoah/ant-installer" />
 			<info name="support_url" value="https://github.com/rednoah/ant-installer/issues" />
