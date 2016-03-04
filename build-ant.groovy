@@ -11,7 +11,8 @@ def url = [
 // generate properties file
 ant.propertyfile(file: 'build-ant.properties', comment: "Apache Ant ${version.ant} & Apache Ivy ${version.ivy} binaries") {
 	version.each{ n, v ->
+		entry(key:"${n}.version", value: v)
 		entry(key:"${n}.url", value: url[n])
-		entry(key:"${n}.md5", value: new URL(url[n]+'.md5').getText().trim())
+		entry(key:"${n}.md5", value: new URL(url[n]+'.md5').getText().tokenize().first())
 	}
 }

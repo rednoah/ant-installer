@@ -1,1 +1,1 @@
-ant update-ant spk package-source -lib "lib"
+ant update-ant -lib "lib" && ant spk package-source -lib "lib"
