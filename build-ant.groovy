@@ -1,5 +1,5 @@
 def version = [
-	ant: '1.9.6',
+	ant: '1.9.7',
 	ivy: '2.4.0'
 ]
 

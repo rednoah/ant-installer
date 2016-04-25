@@ -1,10 +1,10 @@
 #!/bin/sh
 
-# Apache Ant Installer for Apache Ant 1.9.6
+# Apache Ant Installer for Apache Ant 1.9.7
 # Example: curl -O https://raw.githubusercontent.com/rednoah/ant-installer/master/release/install-ant.sh && sh -x install-ant.sh
 
-ANT_URL="https://www.apache.org/dist/ant/binaries/apache-ant-1.9.6-bin.tar.gz"
-ANT_MD5="f1d2e99df927a141c355210d55fe4d32"
+ANT_URL="https://www.apache.org/dist/ant/binaries/apache-ant-1.9.7-bin.tar.gz"
+ANT_MD5="bc1d9e5fe73eee5c50b26ed411fb0119"
 IVY_URL="https://www.apache.org/dist/ant/ivy/2.4.0/apache-ivy-2.4.0-bin.tar.gz"
 IVY_MD5="f49da4437964f44694819db4e9708c54"
 
@@ -50,6 +50,7 @@ ln -sf "$ANT_HOME" "/usr/local/ant"
 
 # fetch optional ant libs
 export ANT_OPTS="-Duser.home=$PWD"
+export LANG="en_US.utf8"
 $ANT_EXE -f "$ANT_HOME/fetch.xml" -Ddest=system
 
 # link ivy into the ant lib folder

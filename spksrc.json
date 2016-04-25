@@ -5,11 +5,11 @@
     "packages":[
         {
             "package":"apache-ant",
-            "version":"1.9.6",
+            "version":"1.9.7",
             "dname":"Apache Ant Installer",
-            "desc":"Apache Ant Installer will help you install Apache Ant 1.9.6 on your Synology NAS. On install, this package will download the Apache Ant and Apache Ivy binaries and optional libraries. This may take a while.",
-            "maintainer":"rednoah",
-            "maintainer_url":"https://github.com/rednoah/ant-installer",
+            "desc":"Apache Ant Installer will help you install Apache Ant 1.9.7 on your Synology NAS. On install, this package will download the Apache Ant and Apache Ivy binaries and optional libraries. This may take a while.",
+            "maintainer":"Apache Software Foundation",
+            "maintainer_url":"http://ant.apache.org/",
             "distributor":"rednoah",
             "distributor_url":"https://github.com/rednoah/ant-installer",
             "start":false,
@@ -19,8 +19,8 @@
             "thumbnail":[
                 "https://raw.githubusercontent.com/rednoah/ant-installer/master/package/synology/images/thumb_256.png"
             ],
-            "link":"https://github.com/rednoah/ant-installer/releases/download/1.9.6/apache-ant-1.9.6-noarch.spk",
-            "md5":"a55dffee74b10c2ab80000969a319257",
+            "link":"https://github.com/rednoah/ant-installer/releases/download/1.9.7/apache-ant-1.9.7-noarch.spk",
+            "md5":"1b3985821a4d2eb1e4a642cb83170a6c",
             "size":51200
         }
     ]
