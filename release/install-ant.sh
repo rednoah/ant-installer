@@ -1,13 +1,13 @@
 #!/bin/sh
 
-# Apache Ant Installer for Apache Ant 1.10.0
+# Apache Ant Installer for Apache Ant 1.10.1
 # Example: curl -O https://raw.githubusercontent.com/rednoah/ant-installer/master/release/install-ant.sh && sh -x install-ant.sh
 
 
 
 # fetch ant
-ANT_URL="https://www.apache.org/dist/ant/binaries/apache-ant-1.10.0-bin.tar.bz2"
-ANT_SHA512="8e21144d9303e06747f5c121cb29f5d57540e32e70497c01f65b6a5ccc7d0a508576078c67c8abf14a4b710257d4deb8fa542858c5977e0291ee2393c0e40e1d"
+ANT_URL="https://www.apache.org/dist/ant/binaries/apache-ant-1.10.1-bin.tar.xz"
+ANT_SHA512="8732ecfd96bcfde626260939f17fdb7e85700092ef69932b250e3572810cd53eaac24e1c72921d89900170804d27cc3100bee7c8b5159d0e5b64c3d79e07bec6"
 
 # fetch tar
 echo "Download $ANT_URL"
@@ -24,9 +24,9 @@ if [ "$ANT_SHA512" != "$ANT_SHA512_ACTUAL" ]; then
 	exit 1
 fi
 
-# unpack bz2-compressed tar archive
+# unpack tar archive
 echo "Extract $TAR"
-tar -vxjf "$TAR"
+tar -xvf "$TAR"
 
 
 
@@ -38,7 +38,7 @@ mkdir -p "/usr/local/bin"
 ln -sf "$ANT_EXE" "/usr/local/bin/ant"
 
 # link ant home to /usr/local/ant
-ANT_BIN=`dirname $ANT_EXE`
+export ANT_BIN=`dirname $ANT_EXE`
 export ANT_HOME=`dirname $ANT_BIN`
 ln -sf "$ANT_HOME" "/usr/local/ant"
 
@@ -46,7 +46,7 @@ ln -sf "$ANT_HOME" "/usr/local/ant"
 
 # fetch optional ant libs
 export ANT_OPTS="-Duser.home=$PWD"
-export LANG="en_US.utf8"
+export LANG="C.UTF-8"
 $ANT_EXE -f "$ANT_HOME/fetch.xml" -Ddest=system
 
 

@@ -24,9 +24,9 @@ if [ "$ANT_SHA512" != "$ANT_SHA512_ACTUAL" ]; then
 	exit 1
 fi
 
-# unpack bz2-compressed tar archive
+# unpack tar archive
 echo "Extract $TAR"
-tar -vxjf "$TAR"
+tar -xvf "$TAR"
 
 
 
@@ -38,7 +38,7 @@ mkdir -p "/usr/local/bin"
 ln -sf "$ANT_EXE" "/usr/local/bin/ant"
 
 # link ant home to /usr/local/ant
-ANT_BIN=`dirname $ANT_EXE`
+export ANT_BIN=`dirname $ANT_EXE`
 export ANT_HOME=`dirname $ANT_BIN`
 ln -sf "$ANT_HOME" "/usr/local/ant"
 
@@ -46,7 +46,7 @@ ln -sf "$ANT_HOME" "/usr/local/ant"
 
 # fetch optional ant libs
 export ANT_OPTS="-Duser.home=$PWD"
-export LANG="en_US.utf8"
+export LANG="C.UTF-8"
 $ANT_EXE -f "$ANT_HOME/fetch.xml" -Ddest=system
 
 
