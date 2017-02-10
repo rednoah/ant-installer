@@ -46,7 +46,6 @@ ln -sf "$ANT_HOME" "/usr/local/ant"
 
 # fetch optional ant libs
 export ANT_OPTS="-Duser.home=$PWD"
-export LANG="C.UTF-8"
 $ANT_EXE -f "$ANT_HOME/fetch.xml" -Ddest=system
 
 
