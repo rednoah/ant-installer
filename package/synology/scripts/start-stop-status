@@ -11,8 +11,9 @@ case "$1" in
 			if [ -x "/usr/local/ant/bin/ant" ]; then
 				echo "Add environment variables to $SYS_PROFILE" >> "$PKG_LOG"
 
+
 				# add environment variables to /etc/profile
-				echo "export ANT_HOME=/usr/local/ant      ${COMMENT}" >> "$SYS_PROFILE"
+				echo "export ANT_HOME=/usr/local/ant      $COMMENT" >> "$SYS_PROFILE"
 			fi
 		fi
 		exit 0
@@ -23,15 +24,15 @@ case "$1" in
 	;;
 
 	status)
-		exit 0
+		if [ -x "/usr/local/bin/ant" ] && [ -x "/usr/local/ant/bin/ant" ]; then
+			exit 0
+		else
+			exit 150 # package is broken and should be reinstalled
+		fi
 	;;
 
 	log)
 		echo "$PKG_LOG"
 		exit 0
-	;;
-
-	*)
-		exit 1
 	;;
 esac
