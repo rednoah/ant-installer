@@ -20,6 +20,7 @@
                 "https://raw.githubusercontent.com/rednoah/ant-installer/master/package/synology/images/thumb_256.png"
             ],
             "link":"https://github.com/rednoah/ant-installer/releases/download/1.10.4/apache-ant-1.10.4-noarch.spk",
+            "download_count":"20613",
             "md5":"8782746842de6d206f6ff20844e2ebe6",
             "sha256":"5cde65ef00d8abcba18a915fdf7fd5a88bf10dab30d4346a65d79b2ac165543f",
             "size":51200

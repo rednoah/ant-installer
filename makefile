@@ -1,7 +1,11 @@
 ANT := ant -lib lib
 
-package: update
-	$(ANT) spk package-source
+spksrc:
+	$(ANT) package-source
+
+spk: update
+	$(ANT) spk
+	$(ANT) package-source
 
 update:
 	$(ANT) resolve

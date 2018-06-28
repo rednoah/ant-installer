@@ -39,12 +39,20 @@
 
 
 	<target name="package-source" description="Update Synology Package Source">
+		<!-- get download count from GitHub API -->
+		<exec executable="groovy" outputproperty="download_count" errorproperty="null" failonerror="yes">
+			<arg value="-e" />
+			<arg value="println new groovy.json.JsonSlurper().parse(new URL('https://api.github.com/repos/rednoah/java-installer/releases')).assets.download_count.flatten().sum()" />
+		</exec>
+		<echo message="Download Count: ${download_count}" />
+
 		<syno:package-source file="${basedir}/spksrc.json">
 			<keyring file="${dir.package}/gpg/FileBot.pub" />
 			<spk file="${dir.release}/${package}-${version}-noarch.spk">
 				<info name="dname" value="${title}" />
 				<info name="desc" value="${title} will help you install ${product} ${version} on your Synology NAS. On install, this package will download the Apache Ant and Apache Ivy binaries and optional libraries. This may take a while." />
 				<info name="link" value="https://github.com/rednoah/ant-installer/releases/download/${version}/${package}-${version}-noarch.spk" />
+				<info name="download_count" value="${download_count}" />
 				<thumbnail url="https://raw.githubusercontent.com/rednoah/ant-installer/master/package/synology/images/thumb_256.png" />
 			</spk>
 		</syno:package-source>
