@@ -1,13 +1,13 @@
 #!/bin/sh
 
-# Apache Ant Installer for Apache Ant 1.10.2
+# Apache Ant Installer for Apache Ant 1.10.4
 # Example: curl -O https://raw.githubusercontent.com/rednoah/ant-installer/master/release/install-ant.sh && sh -x install-ant.sh
 
 
 
 # fetch ant
-ANT_URL="https://www.apache.org/dist/ant/binaries/apache-ant-1.10.2-bin.tar.xz"
-ANT_SHA512="a1af5173eafbc5b76fe0ae62c656c96a4c3bfd9d67b10ad19fef53152ae73d61aa05d1b57ceca1d007475113f234feb9d1541d2c624f6ac606361a6e6e375385"
+ANT_URL="https://www.apache.org/dist/ant/binaries/apache-ant-1.10.4-bin.tar.xz"
+ANT_SHA512="5f61734a7bfec775a272dd827ee84364d5328742dbcc72f9acbfeb2bb44a13b34c7673d75be41748510ca31c053ccbf9160874055213fff893f5df2043ba8b03"
 
 # fetch tar
 echo "Download $ANT_URL"

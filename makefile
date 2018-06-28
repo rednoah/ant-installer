@@ -1,6 +1,5 @@
 ANT := ant -lib lib
 
-
 package: update
 	$(ANT) spk package-source
 
