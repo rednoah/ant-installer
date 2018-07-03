@@ -81,7 +81,7 @@
 
 	<target name="update-ant" description="Update Ant build properties">
 		<delete file="build-ant.properties" />
-		<groovy:groovy tasksrc="build-ant.groovy" />
+		<groovy:groovy src="build-ant.groovy" />
 	</target>
 
 
