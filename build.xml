@@ -53,7 +53,9 @@
 
 
 	<target name="qpkg" depends="build" description="Build QNAP Package">
-		<copy todir="${dir.package}/qnap/shared" dir="release" includes="*.sh" overwrite="yes" verbose="true" />
+		<copy todir="${dir.package}/qnap/shared" overwrite="yes" verbose="true">
+			<fileset dir="release" includes="*.sh" />
+		</copy>
 		<exec executable="qbuild" dir="${dir.package}/qnap" failonerror="yes">
 			<arg line="--build-version ${version} --build-dir ${dir.release}" />
 		</exec>
