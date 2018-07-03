@@ -1,6 +1,6 @@
 #!/bin/sh
 CONF="/etc/config/qpkg.conf"
-QPKG_NAME="ant-installer"
+QPKG_NAME="apache-ant"
 QPKG_ROOT=`/sbin/getcfg $QPKG_NAME Install_Path -f $CONF`
 
 
