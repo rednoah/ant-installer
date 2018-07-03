@@ -1,0 +1,41 @@
+######################################################################
+# Define any package specific operations that shall be performed when
+# the package is removed.
+######################################################################
+
+
+PKG_POST_REMOVE='{
+	SYS_PROFILE="/etc/profile"
+	COMMENT="# added by Ant Installer"
+
+	# remove symlinks
+	rm "/usr/local/bin/ant"
+	rm "/usr/local/ant"
+
+	# remove /etc/profile additions
+	sed -i "/${COMMENT}/d" "$SYS_PROFILE"
+}'
+
+
+######################################################################
+# Define any package specific operations that shall be performed when
+# the package is installed.
+######################################################################
+
+
+pkg_install(){
+	cd "$SYS_QPKG_DIR"
+	"$SYS_QPKG_DIR/install-ant.sh" install >> "$SYS_QPKG_DIR/install-ant.log" 2>&1
+}
+
+
+pkg_post_install(){
+	# make sure that `ant` is working
+	if [ -x "/usr/local/ant/bin/ant" ]; then
+		# display success message
+		export ANT_HOME="/usr/local/ant" && "/usr/local/ant/bin/ant" -version
+	else
+		# display error message
+		err_log "Ooops, something went wrong... View Log for details."
+	fi
+}
