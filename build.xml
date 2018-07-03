@@ -56,6 +56,8 @@
 		<copy todir="${dir.package}/qnap/shared" overwrite="yes" verbose="true">
 			<fileset dir="release" includes="*.sh" />
 		</copy>
+		<chmod dir="${dir.package}/qnap" perm="+x" includes="*.sh" />
+
 		<exec executable="qbuild" dir="${dir.package}/qnap" failonerror="yes">
 			<arg line="--build-version ${version} --build-dir ${dir.release}" />
 		</exec>
@@ -73,6 +75,7 @@
 				</propertyset>
 			</filterset>
 		</copy>
+		<chmod dir="${dir.release}" perm="+x" includes="*.sh" />
 	</target>
 
 
