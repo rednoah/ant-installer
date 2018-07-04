@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <plugins>
   <item>
-    <cachechk>201807040730</cachechk>
+    <cachechk>1530664709127</cachechk>
     <name>Apache Ant Installer</name>
     <internalName>apache-ant</internalName>
     <category>Essentials</category>
@@ -46,9 +46,7 @@
       <platformID>TS-ARM-X19</platformID>
       <location>https://github.com/rednoah/ant-installer/releases/download/1.10.4/apache-ant-1.10.4.qpkg</location>
     </platform>
-    <publishedDate>2018/07/04</publishedDate>
     <maintainer>rednoah</maintainer>
     <forumLink>https://github.com/rednoah/ant-installer</forumLink>
-    <language>English</language>
   </item>
 </plugins>

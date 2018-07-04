@@ -3,7 +3,6 @@ import groovy.xml.*
 
 def f = 'qnap-repo.xml' as File
 
-def now = new Date()
 
 f.withWriter('UTF-8') { writer ->
 	def xml = new MarkupBuilder(writer)
@@ -11,7 +10,7 @@ f.withWriter('UTF-8') { writer ->
 	xml.mkp.xmlDeclaration(version: "1.0", encoding: "utf-8")
 	xml.plugins {
 		item {
-			cachechk(now.format('yyyyMMddHHmm'))
+			cachechk(System.currentTimeMillis())
 			name(properties.title)
 			internalName(properties.package)
 			category('Essentials')
@@ -26,10 +25,8 @@ f.withWriter('UTF-8') { writer ->
 					location("https://github.com/rednoah/ant-installer/releases/download/${properties.version}/${properties.package}-${properties.version}.qpkg")
 				}
 			}
-			publishedDate(now.format('yyyy/MM/dd'))
 			maintainer('rednoah')
 			forumLink('https://github.com/rednoah/ant-installer')
-			language('English')
 		}
 	}
 }
