@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <plugins>
   <item>
-    <cachechk>1530665987229</cachechk>
+    <cachechk>1530667170432</cachechk>
     <name>Apache Ant Installer</name>
     <internalName>apache-ant</internalName>
     <category>Essentials</category>
@@ -12,39 +12,39 @@
     <version>1.10.4</version>
     <platform>
       <platformID>TS-269H</platformID>
-      <location>https://github.com/rednoah/ant-installer/releases/download/1.10.4/apache-ant-1.10.4.qpkg</location>
+      <location>https://get.filebot.net/qnap/apache-ant-1.10.4.qpkg</location>
     </platform>
     <platform>
       <platformID>TS-NASARM</platformID>
-      <location>https://github.com/rednoah/ant-installer/releases/download/1.10.4/apache-ant-1.10.4.qpkg</location>
+      <location>https://get.filebot.net/qnap/apache-ant-1.10.4.qpkg</location>
     </platform>
     <platform>
       <platformID>TS-NASX86</platformID>
-      <location>https://github.com/rednoah/ant-installer/releases/download/1.10.4/apache-ant-1.10.4.qpkg</location>
+      <location>https://get.filebot.net/qnap/apache-ant-1.10.4.qpkg</location>
     </platform>
     <platform>
       <platformID>TS-X28</platformID>
-      <location>https://github.com/rednoah/ant-installer/releases/download/1.10.4/apache-ant-1.10.4.qpkg</location>
+      <location>https://get.filebot.net/qnap/apache-ant-1.10.4.qpkg</location>
     </platform>
     <platform>
       <platformID>TS-X31</platformID>
-      <location>https://github.com/rednoah/ant-installer/releases/download/1.10.4/apache-ant-1.10.4.qpkg</location>
+      <location>https://get.filebot.net/qnap/apache-ant-1.10.4.qpkg</location>
     </platform>
     <platform>
       <platformID>TS-X31U</platformID>
-      <location>https://github.com/rednoah/ant-installer/releases/download/1.10.4/apache-ant-1.10.4.qpkg</location>
+      <location>https://get.filebot.net/qnap/apache-ant-1.10.4.qpkg</location>
     </platform>
     <platform>
       <platformID>TS-X41</platformID>
-      <location>https://github.com/rednoah/ant-installer/releases/download/1.10.4/apache-ant-1.10.4.qpkg</location>
+      <location>https://get.filebot.net/qnap/apache-ant-1.10.4.qpkg</location>
     </platform>
     <platform>
       <platformID>TS-ARM-X09</platformID>
-      <location>https://github.com/rednoah/ant-installer/releases/download/1.10.4/apache-ant-1.10.4.qpkg</location>
+      <location>https://get.filebot.net/qnap/apache-ant-1.10.4.qpkg</location>
     </platform>
     <platform>
       <platformID>TS-ARM-X19</platformID>
-      <location>https://github.com/rednoah/ant-installer/releases/download/1.10.4/apache-ant-1.10.4.qpkg</location>
+      <location>https://get.filebot.net/qnap/apache-ant-1.10.4.qpkg</location>
     </platform>
     <maintainer>rednoah</maintainer>
     <forumLink>https://github.com/rednoah/ant-installer</forumLink>
