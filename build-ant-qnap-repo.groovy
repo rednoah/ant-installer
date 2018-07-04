@@ -15,7 +15,7 @@ f.withWriter('UTF-8') { writer ->
 			internalName(properties.package)
 			category('Essentials')
 			type('Developer Tools')
-			icon80('https://github.com/rednoah/java-installer/raw/master/package/qnap/icons/oracle-java_80.gif')
+			icon80('https://raw.githubusercontent.com/rednoah/ant-installer/master/package/qnap/icons/apache-ant_80.gif')
 			description("${properties.title} will help you install ${properties.product} ${properties.version} on your Synology NAS. On install, this package will download the Apache Ant and Apache Ivy binaries and optional libraries. This may take a while.")
 			fwVersion('4.2.1')
 			version(properties.version)
