@@ -19,7 +19,7 @@ f.withWriter('UTF-8') { writer ->
 			icon80('https://github.com/rednoah/java-installer/raw/master/package/qnap/icons/oracle-java_80.gif')
 			description("${properties.title} will help you install ${properties.product} ${properties.version} on your Synology NAS. On install, this package will download the Apache Ant and Apache Ivy binaries and optional libraries. This may take a while.")
 			fwVersion('4.2.1')
-			fwVersion(properties.version)
+			version(properties.version)
 			['TS-269H', 'TS-NASARM', 'TS-NASX86', 'TS-X28', 'TS-X31', 'TS-X31U', 'TS-X41', 'TS-ARM-X09', 'TS-ARM-X19'].each{ id ->
 				platform{
 					platformID(id)
@@ -27,7 +27,7 @@ f.withWriter('UTF-8') { writer ->
 				}
 			}
 			publishedDate(now.format('yyyy/MM/dd'))
-			maintainer('Apache Software Foundation')
+			maintainer('rednoah')
 			forumLink('https://github.com/rednoah/ant-installer')
 			language('English')
 		}
