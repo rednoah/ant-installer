@@ -17,6 +17,27 @@ case "$1" in
 			exit 1
 		fi
 
+		# find ant executable
+		ANT_EXE=`find "$QPKG_ROOT" -name "ant" -type f`
+		ANT_BIN=`dirname $ANT_EXE`
+		ANT_HOME=`dirname $ANT_BIN`
+
+		# link executable into /usr/local/bin/ant
+		ln -sf "$ANT_EXE" "/usr/local/bin/ant"
+
+		# link ant home to /usr/local/ant
+		ln -sf "$ANT_HOME" "/usr/local/ant"
+
+		# make sure that `ant` is working
+		if [ -x "/usr/local/ant/bin/ant" ]; then
+			# display success message
+			export ANT_HOME="/usr/local/ant" && "/usr/local/ant/bin/ant" -version >> "$QPKG_LOG" 2>&1
+		else
+			# display error message
+			err_log "Ooops, something went wrong... View Log for details... $QPKG_LOG"
+		fi
+
+		# add ANT_HOME to system-wide profile
 		if [ `grep -c "$COMMENT" $SYS_PROFILE` == "0" ]; then
 			if [ -x "/usr/local/ant/bin/ant" ]; then
 				echo "Add environment variables to $SYS_PROFILE" >> "$QPKG_LOG"
@@ -25,11 +46,15 @@ case "$1" in
 				echo "export ANT_HOME=/usr/local/ant      $COMMENT" >> "$SYS_PROFILE"
 			fi
 		fi
-		exit 0
 	;;
 
 	stop)
-		exit 0
+		# remove symlinks
+		rm "/usr/local/bin/ant"
+		rm "/usr/local/ant"
+
+		# remove /etc/profile additions
+		sed -i "/${COMMENT}/d" "$SYS_PROFILE"
 	;;
 
 	restart)
@@ -38,8 +63,9 @@ case "$1" in
 	;;
 
 	*)
-	echo "Usage: $0 {start|stop|restart}"
-	exit 1
+		echo "Usage: $0 {start|stop|restart}"
+		exit 1
 esac
+
 
 exit 0
