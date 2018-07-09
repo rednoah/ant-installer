@@ -22,16 +22,13 @@ case "$1" in
 		ANT_BIN=`dirname $ANT_EXE`
 		ANT_HOME=`dirname $ANT_BIN`
 
-		# link executable into /usr/local/bin/ant
-		ln -sf "$ANT_EXE" "/usr/local/bin/ant"
-
-		# link ant home to /usr/local/ant
-		ln -sf "$ANT_HOME" "/usr/local/ant"
+		ln -sf "$ANT_EXE" "/usr/bin/ant"
+		ln -sf "$ANT_HOME" "/usr/share/ant"
 
 		# make sure that `ant` is working
-		if [ -x "/usr/local/ant/bin/ant" ]; then
+		if [ -x "/usr/share/ant/bin/ant" ]; then
 			# display success message
-			export ANT_HOME="/usr/local/ant" && "/usr/local/ant/bin/ant" -version >> "$QPKG_LOG" 2>&1
+			export ANT_HOME="/usr/share/ant" && "/usr/share/ant/bin/ant" -version >> "$QPKG_LOG" 2>&1
 		else
 			# display error message
 			err_log "Ooops, something went wrong... View Log for details... $QPKG_LOG"
@@ -39,19 +36,19 @@ case "$1" in
 
 		# add ANT_HOME to system-wide profile
 		if [ `grep -c "$COMMENT" $SYS_PROFILE` == "0" ]; then
-			if [ -x "/usr/local/ant/bin/ant" ]; then
+			if [ -x "/usr/share/ant/bin/ant" ]; then
 				echo "Add environment variables to $SYS_PROFILE" >> "$QPKG_LOG"
 
 				# add environment variables to /etc/profile
-				echo "export ANT_HOME=/usr/local/ant      $COMMENT" >> "$SYS_PROFILE"
+				echo "export ANT_HOME=/usr/share/ant      $COMMENT" >> "$SYS_PROFILE"
 			fi
 		fi
 	;;
 
 	stop)
 		# remove symlinks
-		rm "/usr/local/bin/ant"
-		rm "/usr/local/ant"
+		rm "/usr/bin/ant"
+		rm "/usr/share/ant"
 
 		# remove /etc/profile additions
 		sed -i "/${COMMENT}/d" "$SYS_PROFILE"
