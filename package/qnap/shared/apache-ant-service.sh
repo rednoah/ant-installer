@@ -12,7 +12,7 @@ case "$1" in
 			exit 1
 		fi
 
-		ANT_EXE=$QPKG_ROOT/*/bin/ant
+		ANT_EXE=$(find $QPKG_ROOT -name ant -type f | head -n 1)
 		ANT_BIN=$(dirname $JAVA_EXE)
 		ANT_HOME=$(dirname $JAVA_BIN)
 
