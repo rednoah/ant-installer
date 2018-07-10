@@ -13,8 +13,8 @@ case "$1" in
 		fi
 
 		ANT_EXE=$(find $QPKG_ROOT -name ant -type f | head -n 1)
-		ANT_BIN=$(dirname $JAVA_EXE)
-		ANT_HOME=$(dirname $JAVA_BIN)
+		ANT_BIN=$(dirname $ANT_EXE)
+		ANT_HOME=$(dirname $ANT_BIN)
 
 		/bin/ln -sf "$ANT_EXE" "/usr/bin/ant"
 		/bin/ln -sf "$ANT_HOME" "/opt/ant"
