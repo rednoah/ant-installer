@@ -16,16 +16,8 @@ case "$1" in
 		ANT_BIN=$(dirname $ANT_EXE)
 		ANT_HOME=$(dirname $ANT_BIN)
 
-		/bin/ln -sf "$ANT_EXE" "/usr/bin/ant"
-		/bin/ln -sf "$ANT_HOME" "/opt/ant"
-
-		if [ -x "/usr/bin/ant" ]; then
-			# display success message
-			/sbin/log_tool -t0 -uSystem -p127.0.0.1 -mlocalhost -a "[$QPKG_NAME] $(/usr/bin/ant -version 2>&1)"
-		else
-			# display error message
-			/sbin/log_tool -t2 -uSystem -p127.0.0.1 -mlocalhost -a "[$QPKG_NAME] Ooops, something went wrong... Run \`$QPKG_ROOT/install-ant.log\` for details."
-		fi
+		ln -sf "$ANT_EXE" "/usr/bin/ant"
+		ln -sf "$ANT_HOME" "/opt/ant"
 		exit 0
 	;;
 
