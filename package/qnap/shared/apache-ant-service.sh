@@ -21,10 +21,10 @@ case "$1" in
 
 		if [ -x "/usr/bin/ant" ]; then
 			# display success message
-			/sbin/log_tool -t0 -uSystem -p127.0.0.1 -mlocalhost "$(/usr/bin/ant -version 2>&1)"
+			/sbin/log_tool -t0 -uSystem -p127.0.0.1 -mlocalhost -a "[$QPKG_NAME] $(/usr/bin/ant -version 2>&1)"
 		else
 			# display error message
-			/sbin/log_tool -t2 -uSystem -p127.0.0.1 -mlocalhost "Ooops, something went wrong... Run \`$QPKG_ROOT/install-ant.log\` for details."
+			/sbin/log_tool -t2 -uSystem -p127.0.0.1 -mlocalhost -a "[$QPKG_NAME] Ooops, something went wrong... Run \`$QPKG_ROOT/install-ant.log\` for details."
 		fi
 		exit 0
 	;;
