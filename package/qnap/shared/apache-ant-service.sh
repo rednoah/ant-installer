@@ -26,22 +26,22 @@ case "$1" in
 			# display error message
 			/sbin/log_tool -t2 -uSystem -p127.0.0.1 -mlocalhost "Ooops, something went wrong... Run \`$QPKG_ROOT/install-ant.log\` for details."
 		fi
-		;;
+		exit 0
+	;;
 
 	stop)
 		rm -rf "/usr/bin/ant"
 		rm -rf "/opt/ant"
-		;;
+		exit 0
+	;;
 
 	restart)
 		$0 stop
 		$0 start
-		;;
+		exit 0
+	;;
 
 	*)
 		echo "Usage: $0 {start|stop|restart}"
 		exit 1
 esac
-
-
-exit 0
