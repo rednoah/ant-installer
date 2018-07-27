@@ -31,9 +31,8 @@ tar -xvf "$TAR"
 
 
 # find ant executable
-export ANT_EXE=`find "$PWD" -name "ant" -type f`
-export ANT_BIN=`dirname $ANT_EXE`
-export ANT_HOME=`dirname $ANT_BIN`
+export ANT_HOME="$PWD/apache-ant-1.10.5"
+export ANT_EXE="$ANT_HOME/bin/ant"
 
 # fetch optional ant libs
 export ANT_OPTS="-Duser.home=$PWD"
