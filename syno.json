@@ -5,7 +5,7 @@
     "packages":[
         {
             "package":"apache-ant",
-            "version":"1.10.4",
+            "version":"1.10.5",
             "dname":"Apache Ant",
             "desc":"Apache Ant is a command-line tool that drives processes described in build files. Ant supplies a number of built-in tasks allowing you to compile, assemble, test and run Java applications. Software development projects looking for dependency management can use Ant in combination with Apache Ivy.",
             "maintainer":"Apache Software Foundation",
@@ -19,10 +19,10 @@
             "thumbnail":[
                 "https://raw.githubusercontent.com/rednoah/ant-installer/master/package/synology/images/thumb_256.png"
             ],
-            "link":"https://github.com/rednoah/ant-installer/releases/download/1.10.4/apache-ant-1.10.4-noarch.spk",
+            "link":"https://github.com/rednoah/ant-installer/releases/download/1.10.5/apache-ant-1.10.5-noarch.spk",
             "download_count":"1782",
-            "md5":"332835b89fa765881d732666f2e4c73d",
-            "sha256":"40ee022b7b9c4a796c5960a6fbb41e20caa70f529806de8ca281b29db346290d",
+            "md5":"df0a0dae467e8441276962a03c60f2e1",
+            "sha256":"02d444e1bf146595eb9a607bf31abdff17b205f41e2d7c0536e45a2eab2577bd",
             "size":26337280
         }
     ]
