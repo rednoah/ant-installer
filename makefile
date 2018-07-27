@@ -1,7 +1,7 @@
 ANT := ant -lib lib
 
-syno-repo:
-	$(ANT) syno-repo
+build:
+	$(ANT) build
 
 spk: update
 	$(ANT) spk
@@ -13,3 +13,5 @@ qpkg: update
 update:
 	$(ANT) resolve
 	$(ANT) update-ant
+	$(ANT) build
+	$(ANT) fetch

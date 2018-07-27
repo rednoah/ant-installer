@@ -1,25 +1,28 @@
 #!/bin/sh
 
-PKG_LOG="$SYNOPKG_PKGDEST/install-ant.log"
 SYS_PROFILE="/etc/profile"
-COMMENT="# added by Ant Installer"
-
+COMMENT="# added by Apache Ant"
 
 case "$1" in
 	start)
+		# add symlinks
+		ln -sf "$SYNOPKG_PKGDEST/bin/ant" "/usr/local/bin/ant"
+		ln -sf "$SYNOPKG_PKGDEST" "/usr/local/ant"
+
+		# add environment variables to /etc/profile
 		if [ `grep -c "$COMMENT" $SYS_PROFILE` == "0" ]; then
-			if [ -x "/usr/local/ant/bin/ant" ]; then
-				echo "Add environment variables to $SYS_PROFILE" >> "$PKG_LOG"
-
-
-				# add environment variables to /etc/profile
-				echo "export ANT_HOME=/usr/local/ant      $COMMENT" >> "$SYS_PROFILE"
-			fi
+			echo "export ANT_HOME=/usr/local/ant      $COMMENT" >> "$SYS_PROFILE"
 		fi
 		exit 0
 	;;
 
 	stop)
+		# remove symlinks
+		rm "/usr/local/bin/ant"
+		rm "/usr/local/ant"
+
+		# remove /etc/profile additions
+		sed -i "/${COMMENT}/d" "$SYS_PROFILE"
 		exit 0
 	;;
 
@@ -32,7 +35,11 @@ case "$1" in
 	;;
 
 	log)
-		echo "$PKG_LOG"
 		exit 0
+	;;
+
+	*)
+		echo "Usage: $0 {start|stop|status|log}"
+		exit 1
 	;;
 esac

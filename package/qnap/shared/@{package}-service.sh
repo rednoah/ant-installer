@@ -12,12 +12,8 @@ case "$1" in
 			exit 1
 		fi
 
-		ANT_EXE=$(find $QPKG_ROOT -name ant -type f | head -n 1)
-		ANT_BIN=$(dirname $ANT_EXE)
-		ANT_HOME=$(dirname $ANT_BIN)
-
-		ln -sf "$ANT_EXE" "/usr/bin/ant"
-		ln -sf "$ANT_HOME" "/opt/ant"
+		ln -sf "$QPKG_ROOT/bin/ant" "/usr/bin/ant"
+		ln -sf "$QPKG_ROOT" "/opt/ant"
 		exit 0
 	;;
 

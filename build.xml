@@ -8,12 +8,13 @@
 	<property name="dir.source" location="${basedir}/src" />
 	<property name="dir.lib" location="${basedir}/lib" />
 	<property name="dir.dist" location="${basedir}/dist" />
+	<property name="dir.cache" location="${basedir}/cache" />
 	<property name="dir.package" location="${basedir}/package" />
 	<property name="dir.release" location="${basedir}/release" />
 
 
-	<target name="spk" description="Build Synology Package" depends="build">
-		<syno:spk destdir="${dir.release}" name="${package}" version="${version}" arch="noarch">
+	<target name="spk" description="Build Synology Package">
+		<syno:spk destdir="${dir.dist}" name="${package}" version="${version}" arch="noarch" compression="xz">
 			<info name="displayname" value="${product}" />
 			<info name="description" value="Apache Ant is a command-line tool that drives processes described in build files. Ant supplies a number of built-in tasks allowing you to compile, assemble, test and run Java applications. Software development projects looking for dependency management can use Ant in combination with Apache Ivy." />
 			<info name="maintainer" value="Apache Software Foundation" />
@@ -32,7 +33,9 @@
 			<icon size="256" file="${dir.package}/synology/images/thumb_256.png" />
 
 			<scripts dir="${dir.package}/synology/scripts" filemode="755" />
-			<package dir="${dir.release}" includes="*.sh" filemode="755" />
+
+			<package dir="${dir.cache}/apache-ant-${version}" includes="bin/**" filemode="755" />
+			<package dir="${dir.cache}/apache-ant-${version}" excludes="bin/**" />
 
 			<codesign secring="${dir.package}/gpg/secring.gpg" keyid="${gpg.key}" password="${gpg.pwd}" />
 		</syno:spk>
@@ -42,8 +45,8 @@
 	<target name="syno-repo" description="Update Synology Package Source" depends="stats">
 		<syno:package-source file="${basedir}/syno.json">
 			<keyring file="${dir.package}/gpg/FileBot.pub" />
-			<spk file="${dir.release}/${package}-${version}-noarch.spk">
-				<info name="dname" value="${title}" />
+			<spk file="${dir.dist}/${package}-${version}-noarch.spk">
+				<info name="dname" value="${product}" />
 				<info name="desc" value="${description}" />
 				<info name="link" value="https://github.com/rednoah/ant-installer/releases/download/${version}/${package}-${version}-noarch.spk" />
 				<info name="download_count" value="${download_count}" />
@@ -53,7 +56,11 @@
 	</target>
 
 
-	<target name="qpkg" depends="build" description="Build QNAP Package">
+	<target name="qpkg" description="Build QNAP Package">
+		<copy todir="${dir.dist}/qnap/shared" preservelastmodified="yes">
+			<fileset dir="${dir.cache}/apache-ant-${version}" />
+		</copy>
+
 		<copy-replace todir="${dir.dist}/qnap">
 			<fileset dir="${dir.package}/qnap">
 				<include name="**/*_routines" />
@@ -65,13 +72,14 @@
 
 		<chmod perm="+x" type="file" verbose="yes">
 			<fileset dir="${dir.dist}/qnap">
+				<include name="**/bin/*" />
 				<include name="**/*_routines" />
 				<include name="**/*.sh" />
 			</fileset>
 		</chmod>
 
 		<exec executable="qbuild" dir="${dir.dist}/qnap" failonerror="yes">
-			<arg line="--build-dir ${dir.dist}" />
+			<arg line="--7zip --build-dir ${dir.dist}" />
 		</exec>
 	</target>
 
@@ -93,6 +101,12 @@
 			</filterset>
 		</copy>
 		<chmod dir="${dir.release}" perm="+x" includes="*.sh" />
+	</target>
+
+
+	<target name="fetch" depends="build">
+		<mkdir dir="${dir.cache}" />
+		<exec executable="${dir.release}/get-ant.sh" dir="${dir.cache}" />
 	</target>
 
 

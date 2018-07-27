@@ -1,5 +1,5 @@
 def version = properties.version
-def url = "https://www.apache.org/dist/ant/binaries/apache-ant-${version}-bin.tar.bz2"
+def url = "https://www.apache.org/dist/ant/binaries/apache-ant-${version}-bin.tar.xz"
 
 // generate properties file
 ant.propertyfile(file: 'build-ant.properties', comment: "Apache Ant ${version}") {

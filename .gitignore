@@ -1,4 +1,6 @@
-release
 lib
+cache
+dist
+release
 
 *.properties
