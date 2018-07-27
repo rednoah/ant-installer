@@ -13,7 +13,7 @@
 	<property name="dir.release" location="${basedir}/release" />
 
 
-	<target name="spk" description="Build Synology Package">
+	<target name="spk" depends="fetch" description="Build Synology Package">
 		<syno:spk destdir="${dir.dist}" name="${package}" version="${version}" arch="noarch" compression="xz">
 			<info name="displayname" value="${product}" />
 			<info name="description" value="Apache Ant is a command-line tool that drives processes described in build files. Ant supplies a number of built-in tasks allowing you to compile, assemble, test and run Java applications. Software development projects looking for dependency management can use Ant in combination with Apache Ivy." />
@@ -56,7 +56,7 @@
 	</target>
 
 
-	<target name="qpkg" description="Build QNAP Package">
+	<target name="qpkg" depends="fetch" description="Build QNAP Package">
 		<copy todir="${dir.dist}/qnap/shared" preservelastmodified="yes">
 			<fileset dir="${dir.cache}/apache-ant-${version}" />
 		</copy>
