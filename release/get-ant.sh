@@ -6,8 +6,8 @@
 
 
 # fetch ant
-ANT_URL="https://www.apache.org/dist/ant/binaries/apache-ant-1.10.4-bin.tar.xz"
-ANT_SHA512="5f61734a7bfec775a272dd827ee84364d5328742dbcc72f9acbfeb2bb44a13b34c7673d75be41748510ca31c053ccbf9160874055213fff893f5df2043ba8b03"
+ANT_URL="https://www.apache.org/dist/ant/binaries/apache-ant-1.10.4-bin.tar.bz2"
+ANT_SHA512="5a5eceef09c77f96fadd1058a28cfa75d375e37db36ccbfd120377d58fc801117415260402440c428b993a0f47a25a32af06422624023011e4e7be539e6db673"
 
 # fetch tar
 echo "Download $ANT_URL"
