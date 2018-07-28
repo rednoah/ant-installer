@@ -34,8 +34,8 @@
 
 			<scripts dir="${dir.package}/synology/scripts" filemode="755" />
 
-			<package dir="${dir.cache}/apache-ant-${version}" includes="bin/**" filemode="755" />
-			<package dir="${dir.cache}/apache-ant-${version}" excludes="bin/**" />
+			<package dir="${dir.dist}/ant" includes="bin/**" filemode="755" />
+			<package dir="${dir.dist}/ant" excludes="bin/**" />
 
 			<codesign secring="${dir.package}/gpg/secring.gpg" keyid="${gpg.key}" password="${gpg.pwd}" />
 		</syno:spk>
@@ -107,6 +107,17 @@
 	<target name="fetch" depends="build">
 		<mkdir dir="${dir.cache}" />
 		<exec executable="${dir.release}/get-ant.sh" dir="${dir.cache}" />
+
+		<copy todir="${dir.dist}/ant">
+			<fileset dir="${dir.cache}/apache-ant-${version}">
+				<exclude name="manual/**" />
+				<exclude name="**/*.jar" />
+			</fileset>
+		</copy>
+
+		<!-- uncompress jars because xz compression will do a much better job later on -->
+		<fileset id="jars" dir="${dir.cache}/apache-ant-${version}" includes="**/*.jar" />
+		<groovy:groovy src="build-ant-jars.groovy" />
 	</target>
 
 
@@ -120,6 +131,7 @@
 		<delete file="build-ant.properties" />
 		<groovy:groovy src="build-ant.groovy" />
 	</target>
+
 
 	<target name="stats">
 		<groovy:groovy src="build-ant-stats.groovy" />
