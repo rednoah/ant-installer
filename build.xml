@@ -79,7 +79,7 @@
 		</chmod>
 
 		<exec executable="qbuild" dir="${dir.dist}/qnap" failonerror="yes">
-			<arg line="--7zip --build-dir ${dir.dist}" />
+			<arg line="--gzip --build-dir ${dir.dist}" />
 		</exec>
 	</target>
 
