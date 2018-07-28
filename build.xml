@@ -58,7 +58,7 @@
 
 	<target name="qpkg" depends="fetch" description="Build QNAP Package">
 		<copy todir="${dir.dist}/qnap/shared" preservelastmodified="yes">
-			<fileset dir="${dir.cache}/apache-ant-${version}" />
+			<fileset dir="${dir.dist}/ant" />
 		</copy>
 
 		<copy-replace todir="${dir.dist}/qnap">
@@ -79,7 +79,7 @@
 		</chmod>
 
 		<exec executable="qbuild" dir="${dir.dist}/qnap" failonerror="yes">
-			<arg line="--bzip2 --build-dir ${dir.dist}" />
+			<arg line="--7zip --build-dir ${dir.dist}" />
 		</exec>
 	</target>
 
