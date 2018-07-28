@@ -11,7 +11,6 @@ qpkg: update
 	$(ANT) qpkg
 
 update:
-	$(ANT) resolve
+	$(ANT) clean resolve
 	$(ANT) update-ant
-	$(ANT) build
-	$(ANT) fetch
+	$(ANT) build fetch
