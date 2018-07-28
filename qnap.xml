@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<plugins>
+  <cachechk>20180728065155</cachechk> 
+  <item>
+    <name>Apache Ant (GitHub Download)</name>
+    <internalName>apache-ant</internalName>
+    <category>Essentials</category>
+    <type>Developer Tools</type>
+    <icon100>https://raw.githubusercontent.com/rednoah/ant-installer/master/package/qnap/icons/%40%7Bpackage%7D_100.png</icon100>
+    <icon80>https://raw.githubusercontent.com/rednoah/ant-installer/master/package/qnap/icons/%40%7Bpackage%7D_80.png</icon80>
+    <description>Apache Ant is a command-line tool that drives processes described in build files. Ant supplies a number of built-in tasks allowing you to compile, assemble, test and run Java applications. Software development projects looking for dependency management can use Ant in combination with Apache Ivy.</description>
+    <developer>rednoah</developer>
+    <developerLink>https://github.com/rednoah/ant-installer</developerLink>
+    <fwVersion>4.3.4</fwVersion>
+    <version>1.10.5</version>
+    <platform>
+      <platformID>TS-NASARM</platformID>
+      <location>https://github.com/rednoah/ant-installer/releases/download/1.10.5/apache-ant_1.10.5.qpkg</location>
+    </platform>
+    <platform>
+      <platformID>TS-NASX86</platformID>
+      <location>https://github.com/rednoah/ant-installer/releases/download/1.10.5/apache-ant_1.10.5.qpkg</location>
+    </platform>
+    <platform>
+      <platformID>TS-X28A</platformID>
+      <location>https://github.com/rednoah/ant-installer/releases/download/1.10.5/apache-ant_1.10.5.qpkg</location>
+    </platform>
+    <platform>
+      <platformID>TS-X32</platformID>
+      <location>https://github.com/rednoah/ant-installer/releases/download/1.10.5/apache-ant_1.10.5.qpkg</location>
+    </platform>
+    <platform>
+      <platformID>TS-X32U</platformID>
+      <location>https://github.com/rednoah/ant-installer/releases/download/1.10.5/apache-ant_1.10.5.qpkg</location>
+    </platform>
+    <platform>
+      <platformID>TS-X35A</platformID>
+      <location>https://github.com/rednoah/ant-installer/releases/download/1.10.5/apache-ant_1.10.5.qpkg</location>
+    </platform>
+    <platform>
+      <platformID>TS-XA28A</platformID>
+      <location>https://github.com/rednoah/ant-installer/releases/download/1.10.5/apache-ant_1.10.5.qpkg</location>
+    </platform>
+  </item>
+</plugins>
