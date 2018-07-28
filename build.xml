@@ -121,6 +121,11 @@
 	</target>
 
 
+	<target name="clean" description="Delete build artifacts">
+		<delete dir="${dir.dist}" />
+	</target>
+
+
 	<target name="resolve" description="Retrieve dependencies with Apache Ivy">
 		<delete dir="${dir.lib}" />
 		<ivy:retrieve pattern="${dir.lib}/[artifact]-[type].[ext]" />
