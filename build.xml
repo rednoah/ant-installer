@@ -67,6 +67,8 @@
 				<include name="**/*.sh" />
 				<include name="**/*.cfg" />
 				<include name="**/*.png" />
+				<include name="**/private_key" />
+				<include name="**/certificate" />
 			</fileset>
 		</copy-replace>
 
@@ -81,11 +83,6 @@
 		<exec executable="qbuild" dir="${dir.dist}/qnap" failonerror="yes">
 			<arg line="--7zip --build-dir ${dir.dist}" />
 		</exec>
-	</target>
-
-
-	<target name="qnap-repo">
-		<groovy:groovy src="build-ant-qnap-repo.groovy" />
 	</target>
 
 
