@@ -13,7 +13,7 @@
 	<property name="dir.release" location="${basedir}/release" />
 
 
-	<target name="spk" depends="fetch" description="Build Synology Package">
+	<target name="spk" description="Build Synology Package">
 		<syno:spk destdir="${dir.dist}" name="${package}" version="${version}" arch="noarch" compression="xz">
 			<info name="displayname" value="${product}" />
 			<info name="description" value="Apache Ant is a command-line tool that drives processes described in build files. Ant supplies a number of built-in tasks allowing you to compile, assemble, test and run Java applications. Software development projects looking for dependency management can use Ant in combination with Apache Ivy." />
@@ -56,7 +56,7 @@
 	</target>
 
 
-	<target name="qpkg" depends="fetch" description="Build QNAP Package">
+	<target name="qpkg" description="Build QNAP Package">
 		<copy todir="${dir.dist}/qnap/shared" preservelastmodified="yes">
 			<fileset dir="${dir.dist}/ant" />
 		</copy>
@@ -80,9 +80,10 @@
 			</fileset>
 		</chmod>
 
-		<exec executable="qbuild" dir="${dir.dist}/qnap" failonerror="yes">
-			<arg line="--7zip --build-dir ${dir.dist}" />
+		<exec executable="docker" failonerror="yes">
+			<arg line="run --rm -v ${dir.dist}/qnap:/src rednoah/qpkg-build --7zip" />
 		</exec>
+		<copy file="${dir.dist}/qnap/build/${package}_${version}.qpkg" todir="${dir.dist}" />
 	</target>
 
 
