@@ -10,4 +10,7 @@ update:
 	$(ANT) build fetch
 
 clean:
-	$(ANT) clean
+	rm -rv dist
+	git reset --hard
+	git pull
+	git log -1
