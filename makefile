@@ -10,7 +10,7 @@ update:
 	$(ANT) build fetch
 
 clean:
-	-rm -rv dist
+	-rm -rv dist cache
 	git reset --hard
 	git pull
 	git log -1
